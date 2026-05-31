@@ -1,0 +1,19 @@
+{
+  "name": "自転車 駐輪番号",
+  "short_name": "駐輪番号",
+  "description": "自転車の駐輪番号をすばやく保存して大きく確認できる個人用アプリ",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#f4f2ea",
+  "theme_color": "#111827",
+  "icons": [
+    {
+      "src": "./icons/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
