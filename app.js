@@ -134,7 +134,7 @@ function render() {
   }
 
   panel.classList.remove("is-saved");
-  displayNumber.textContent = inputValue || "----";
+  displayNumber.textContent = inputValue || "---";
   statusText.textContent = "番号を入力してください";
   savedAt.textContent = "保存された番号はありません";
   saveButton.textContent = "保存";
