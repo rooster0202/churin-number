@@ -64,7 +64,7 @@ button {
   box-shadow: var(--shadow);
   padding: 18px;
   display: grid;
-  grid-template-rows: auto minmax(180px, 1fr) auto auto auto;
+  grid-template-rows: auto minmax(180px, 1fr) auto auto auto auto;
   gap: 14px;
 }
 
@@ -105,6 +105,24 @@ h1 {
   cursor: pointer;
   min-height: 44px;
   transition: transform 120ms ease, box-shadow 120ms ease, border-color 120ms ease, background 120ms ease;
+}
+
+.panel.is-saved {
+  grid-template-rows: auto minmax(300px, 1fr) auto;
+}
+
+.panel.is-saved .number-stage {
+  min-height: 320px;
+}
+
+.panel.is-saved .display-number {
+  font-size: clamp(5rem, 25vw, 7.8rem);
+}
+
+.panel.is-saved .entry,
+.panel.is-saved .keypad,
+.panel.is-saved .history {
+  display: none;
 }
 
 .number-stage {
@@ -212,11 +230,45 @@ h1 {
 }
 
 .keypad button:active,
-.icon-button:active,
 .secondary-button:active,
 .done-button:active,
 .primary-button:active {
   transform: translateY(1px);
+}
+
+.history {
+  display: grid;
+  gap: 8px;
+}
+
+.history[hidden] {
+  display: none;
+}
+
+.history-label {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.82rem;
+  font-weight: 800;
+}
+
+.history-list {
+  display: flex;
+  gap: 8px;
+}
+
+.history-chip {
+  min-width: 72px;
+  min-height: 40px;
+  border: 1px solid rgba(0, 104, 183, 0.18);
+  border-radius: 8px;
+  background: linear-gradient(180deg, #ffffff, var(--accent-soft));
+  color: var(--night);
+  font-size: 1.1rem;
+  font-weight: 900;
+  font-variant-numeric: tabular-nums;
+  box-shadow: var(--button-shadow);
+  cursor: pointer;
 }
 
 .actions {
@@ -285,5 +337,9 @@ h1 {
 
   .display-number {
     font-size: clamp(4rem, 28vw, 7rem);
+  }
+
+  .panel.is-saved .display-number {
+    font-size: clamp(4.6rem, 25vw, 7rem);
   }
 }

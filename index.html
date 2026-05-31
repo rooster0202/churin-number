@@ -3,22 +3,22 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-    <meta name="theme-color" content="#111827">
+    <meta name="theme-color" content="#0068b7">
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-title" content="駐輪番号">
+    <meta name="apple-mobile-web-app-title" content="駐輪メモ">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>駐輪番号</title>
+    <title>駐輪メモ</title>
     <link rel="manifest" href="./manifest.webmanifest">
     <link rel="icon" href="./icons/icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="./icons/icon.svg">
-    <link rel="stylesheet" href="./styles.css?v=20260531-light-panel">
+    <link rel="stylesheet" href="./styles.css?v=20260531-memo-flow">
   </head>
   <body>
     <main class="app-shell">
       <section class="panel" aria-labelledby="app-title">
         <header class="topbar">
           <div>
-            <h1 id="app-title">駐輪番号</h1>
+            <h1 id="app-title">駐輪メモ</h1>
           </div>
         </header>
 
@@ -37,7 +37,7 @@
             autocomplete="off"
             pattern="[0-9]*"
             maxlength="4"
-            placeholder="0000"
+            placeholder="000"
             aria-label="駐輪番号"
           >
           <button class="primary-button" id="saveButton" type="submit">保存</button>
@@ -57,6 +57,11 @@
           <button type="button" data-digit="0">0</button>
           <button type="button" id="clearInputButton" aria-label="入力をクリア">C</button>
         </div>
+
+        <section class="history" id="historySection" aria-label="最近の番号">
+          <p class="history-label">最近の番号</p>
+          <div class="history-list" id="historyList"></div>
+        </section>
 
         <footer class="actions">
           <button class="secondary-button" id="editButton" type="button">修正</button>
