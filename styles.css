@@ -1,16 +1,19 @@
 :root {
   color-scheme: light;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  --bg: #f4f2ea;
-  --ink: #141414;
-  --muted: #6b665c;
-  --panel: #fffdf7;
-  --line: rgba(20, 20, 20, 0.13);
-  --accent: #0f766e;
-  --accent-dark: #115e59;
-  --danger: #b42318;
-  --danger-soft: #fff1ef;
-  --shadow: 0 18px 55px rgba(28, 25, 20, 0.16);
+  --ink: #18181b;
+  --muted: #71717a;
+  --panel: #fffefa;
+  --line: rgba(24, 24, 27, 0.12);
+  --accent: #0d9488;
+  --accent-dark: #0f766e;
+  --accent-soft: #ccfbf1;
+  --danger: #be123c;
+  --danger-soft: #fff1f2;
+  --night: #111827;
+  --night-2: #1f2937;
+  --shadow: 0 22px 70px rgba(39, 39, 42, 0.18);
+  --button-shadow: 0 1px 0 rgba(255, 255, 255, 0.9) inset, 0 8px 18px rgba(24, 24, 27, 0.07);
 }
 
 * {
@@ -25,8 +28,12 @@ body {
 body {
   margin: 0;
   background:
-    radial-gradient(circle at 20% 0%, rgba(15, 118, 110, 0.16), transparent 32rem),
-    linear-gradient(135deg, #f7f3e8 0%, #eef4f2 46%, #f9f8f2 100%);
+    linear-gradient(rgba(24, 24, 27, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(24, 24, 27, 0.035) 1px, transparent 1px),
+    radial-gradient(circle at 18% 12%, rgba(13, 148, 136, 0.20), transparent 24rem),
+    radial-gradient(circle at 82% 18%, rgba(244, 63, 94, 0.10), transparent 22rem),
+    linear-gradient(135deg, #f8faf7 0%, #edf7f4 44%, #fbfaf4 100%);
+  background-size: 28px 28px, 28px 28px, auto, auto, auto;
   color: var(--ink);
 }
 
@@ -47,9 +54,11 @@ button {
 }
 
 .panel {
+  position: relative;
+  overflow: hidden;
   width: min(100%, 430px);
   min-height: min(660px, calc(100svh - 24px));
-  background: color-mix(in srgb, var(--panel), white 20%);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(255, 254, 250, 0.98));
   border: 1px solid var(--line);
   border-radius: 8px;
   box-shadow: var(--shadow);
@@ -57,6 +66,14 @@ button {
   display: grid;
   grid-template-rows: auto minmax(180px, 1fr) auto auto auto;
   gap: 14px;
+}
+
+.panel::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto;
+  height: 5px;
+  background: linear-gradient(90deg, #0d9488, #14b8a6 48%, #f43f5e);
 }
 
 .topbar,
@@ -73,7 +90,7 @@ button {
 
 h1 {
   margin: 0;
-  font-size: 1.6rem;
+  font-size: 1.72rem;
   line-height: 1.1;
   letter-spacing: 0;
 }
@@ -87,23 +104,28 @@ h1 {
   border-radius: 8px;
   cursor: pointer;
   min-height: 44px;
+  transition: transform 120ms ease, box-shadow 120ms ease, border-color 120ms ease, background 120ms ease;
 }
 
 .icon-button {
   width: 48px;
   display: grid;
   place-items: center;
-  background: #ffffff;
+  background: linear-gradient(180deg, #ffffff, #f8fafc);
   color: var(--ink);
   font-size: 1.35rem;
+  box-shadow: var(--button-shadow);
 }
 
 .number-stage {
-  border: 1px solid rgba(15, 118, 110, 0.22);
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(17, 24, 39, 0.88);
   border-radius: 8px;
   background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.76), rgba(242, 250, 247, 0.92)),
-    #ecf8f5;
+    linear-gradient(135deg, rgba(20, 184, 166, 0.16), transparent 42%),
+    linear-gradient(180deg, var(--night), var(--night-2));
+  box-shadow: 0 14px 30px rgba(17, 24, 39, 0.18);
   display: grid;
   align-content: center;
   justify-items: center;
@@ -111,10 +133,19 @@ h1 {
   min-height: 150px;
 }
 
+.number-stage::after {
+  content: "";
+  position: absolute;
+  inset: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 6px;
+  pointer-events: none;
+}
+
 .status,
 .saved-at {
   margin: 0;
-  color: var(--muted);
+  color: rgba(255, 255, 255, 0.68);
   font-weight: 700;
   text-align: center;
 }
@@ -132,28 +163,30 @@ h1 {
   width: 100%;
   min-height: 96px;
   margin: 8px 0 10px;
-  color: var(--ink);
+  color: #f8fafc;
   font-size: clamp(4.1rem, 26vw, 7.4rem);
   line-height: 1;
   font-weight: 900;
   letter-spacing: 0;
   text-align: center;
   font-variant-numeric: tabular-nums;
+  text-shadow: 0 2px 18px rgba(45, 212, 191, 0.28);
 }
 
 .spot-input {
   width: 100%;
   min-width: 0;
   height: 52px;
-  border: 1px solid var(--line);
+  border: 1px solid rgba(24, 24, 27, 0.16);
   border-radius: 8px;
-  background: white;
+  background: linear-gradient(180deg, #ffffff, #fafafa);
   color: var(--ink);
   font-size: 2rem;
   font-weight: 800;
   text-align: center;
   letter-spacing: 0;
   font-variant-numeric: tabular-nums;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.85) inset;
 }
 
 .spot-input:focus {
@@ -164,10 +197,11 @@ h1 {
 .primary-button {
   width: 92px;
   flex: 0 0 92px;
-  background: var(--accent);
+  background: linear-gradient(180deg, #14b8a6, var(--accent-dark));
   color: white;
-  border-color: var(--accent);
+  border-color: rgba(13, 148, 136, 0.95);
   font-weight: 800;
+  box-shadow: 0 12px 24px rgba(13, 148, 136, 0.22);
 }
 
 .keypad {
@@ -178,10 +212,11 @@ h1 {
 
 .keypad button {
   aspect-ratio: 2.4;
-  background: white;
+  background: linear-gradient(180deg, #ffffff, #f8fafc);
   color: var(--ink);
   font-size: 1.45rem;
   font-weight: 800;
+  box-shadow: var(--button-shadow);
 }
 
 .keypad button:active,
@@ -204,14 +239,16 @@ h1 {
 }
 
 .secondary-button {
-  background: white;
+  background: linear-gradient(180deg, #ffffff, #f8fafc);
   color: var(--ink);
+  box-shadow: var(--button-shadow);
 }
 
 .done-button {
-  background: var(--danger-soft);
+  background: linear-gradient(180deg, #fff7f8, var(--danger-soft));
   color: var(--danger);
   border-color: rgba(180, 35, 24, 0.2);
+  box-shadow: 0 8px 18px rgba(190, 18, 60, 0.08);
 }
 
 .toast {

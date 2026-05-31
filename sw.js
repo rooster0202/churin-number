@@ -1,4 +1,4 @@
-const CACHE_NAME = "bike-spot-v7";
+const CACHE_NAME = "bike-spot-v8";
 const ASSETS = [
   "./",
   "./index.html",
