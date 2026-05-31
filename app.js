@@ -7,7 +7,6 @@ const entryForm = document.querySelector("#entryForm");
 const saveButton = document.querySelector("#saveButton");
 const editButton = document.querySelector("#editButton");
 const doneButton = document.querySelector("#doneButton");
-const copyButton = document.querySelector("#copyButton");
 const deleteButton = document.querySelector("#deleteButton");
 const clearInputButton = document.querySelector("#clearInputButton");
 const toast = document.querySelector("#toast");
@@ -64,7 +63,6 @@ function render() {
     saveButton.textContent = "変更";
     editButton.disabled = false;
     doneButton.disabled = false;
-    copyButton.disabled = false;
     return;
   }
 
@@ -74,7 +72,6 @@ function render() {
   saveButton.textContent = "保存";
   editButton.disabled = true;
   doneButton.disabled = true;
-  copyButton.disabled = true;
 }
 
 function saveCurrentInput() {
@@ -132,18 +129,6 @@ doneButton.addEventListener("click", () => {
   render();
   showToast(current?.number ? `${current.number} 精算完了` : "完了");
   spotInput.focus();
-});
-
-copyButton.addEventListener("click", async () => {
-  const current = getStoredSpot();
-  if (!current?.number) return;
-
-  try {
-    await navigator.clipboard.writeText(current.number);
-    showToast("コピーしました");
-  } catch {
-    showToast(current.number);
-  }
 });
 
 if ("serviceWorker" in navigator) {
