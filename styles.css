@@ -110,12 +110,12 @@ h1 {
 .number-stage {
   position: relative;
   overflow: hidden;
-  border: 1px solid rgba(17, 24, 39, 0.88);
+  border: 1px solid rgba(0, 104, 183, 0.22);
   border-radius: 8px;
   background:
-    linear-gradient(135deg, rgba(94, 197, 242, 0.26), transparent 44%),
-    linear-gradient(180deg, var(--night), var(--night-2));
-  box-shadow: 0 14px 30px rgba(0, 104, 183, 0.20);
+    linear-gradient(90deg, rgba(94, 197, 242, 0.18), rgba(0, 104, 183, 0.06), transparent 62%) top / 100% 5px no-repeat,
+    linear-gradient(180deg, #ffffff, #f6fbff);
+  box-shadow: 0 10px 28px rgba(0, 104, 183, 0.10);
   display: grid;
   align-content: center;
   justify-items: center;
@@ -126,16 +126,18 @@ h1 {
 .number-stage::after {
   content: "";
   position: absolute;
-  inset: 8px;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 6px;
+  left: 18px;
+  right: 18px;
+  bottom: 14px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(0, 104, 183, 0.24), transparent);
   pointer-events: none;
 }
 
 .status,
 .saved-at {
   margin: 0;
-  color: rgba(255, 255, 255, 0.68);
+  color: var(--muted);
   font-weight: 700;
   text-align: center;
 }
@@ -153,14 +155,14 @@ h1 {
   width: 100%;
   min-height: 96px;
   margin: 8px 0 10px;
-  color: #f8fafc;
+  color: var(--night);
   font-size: clamp(4.1rem, 26vw, 7.4rem);
   line-height: 1;
   font-weight: 900;
   letter-spacing: 0;
   text-align: center;
   font-variant-numeric: tabular-nums;
-  text-shadow: 0 2px 18px rgba(125, 211, 252, 0.34);
+  text-shadow: 0 8px 24px rgba(0, 104, 183, 0.10);
 }
 
 .spot-input {
